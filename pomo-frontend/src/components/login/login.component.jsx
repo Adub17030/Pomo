@@ -1,9 +1,10 @@
 import React from 'react';
 import FormInput from '../form-input/form-input.component';
-import CustomButton from '../custom-button/custom-button.component';
-import { SignInContainer,ButtonsContainer } from './login.styles';
+import { SignInContainer,ButtonsContainer,CustomButtonContainer } from './login.styles';
+
 
 class Login extends React.Component {
+
   render() {
     return (
       <SignInContainer>
@@ -28,7 +29,9 @@ class Login extends React.Component {
           />
         </label>
           <ButtonsContainer>
-            <CustomButton type='submit'> Sign in </CustomButton>
+          <CustomButtonContainer type='submit'  onClick = {this.handleSubmit}>
+            Log In 
+            </CustomButtonContainer>
           </ButtonsContainer>
         </form>
       </SignInContainer>
