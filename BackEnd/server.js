@@ -11,8 +11,8 @@ app.use(cors());
 app.use(express.json());
 
 //MongoDb Methods
-//var MongoClient = require('mongodb').MongoClient;
-//var url = process.env.MONGO_DB_URL;
+var MongoClient = require('mongodb').MongoClient;
+var url = process.env.MONGO_DB_URL;
 
 //Particle connection
 var Particle = require('particle-api-js');
@@ -32,6 +32,23 @@ particle
             console.log('Could not log in.', err);
         }
     );
+
+particle
+    .getVariable({
+        deviceId: process.env.PHOTON_DEVICE_ID,
+        name: normal - doctor,
+        auth: token,
+    })
+    .then(
+        function (data) {
+            MongoDbUpdate(data, 'IotData');
+            res.send(data);
+            console.log('Device variable retrieved successfully:', data);
+        },
+        function (err) {
+            console.log('An error occurred while getting attrs:', err);
+        }
+    );
 /*
 var devicesPr = particle.listDevices({ auth: process.env.PARTICLE_TOKEN });
 devicesPr.then(
@@ -44,14 +61,13 @@ devicesPr.then(
 );
 */
 
-/*
 function MongoDbUpdate(Data, collection) {
     MongoClient.connect(
         url,
         { useNewUrlParser: true, useUnifiedTopology: true },
         function (err, db) {
             if (err) throw err;
-            var dbo = db.db('HackVaccDb');
+            var dbo = db.db('HackDB');
             var myquery = { _id: 1 };
             var newvalues = { $set: { _id: 1, PhotonData: Data } };
             console.log(Data);
@@ -67,16 +83,14 @@ function MongoDbUpdate(Data, collection) {
         }
     );
 }
-*/
 
-/*
 function MongoDbQuery(collection) {
     MongoClient.connect(
         url,
         { useNewUrlParser: true, useUnifiedTopology: true },
         function (err, db) {
             if (err) throw err;
-            var dbo = db.db('HackVaccDb');
+            var dbo = db.db('HackDB');
             var myquery = { _id: 1 };
             dbo.collection(collection)
                 .find(myquery)
@@ -88,30 +102,28 @@ function MongoDbQuery(collection) {
         }
     );
 }
-*/
+
 app.get('/', function (req, res) {
     res.send('Hello World!');
 });
-/*
-app.get('/photon/:var', function (req, res) {
+
+app.get('/photonToggle', function (req, res) {
     particle
-        .getVariable({
-            deviceId: process.env.Device_Id,
-            name: req.params.var,
+        .signalDevice({
+            deviceId: process.env.PHOTON_DEVICE_ID,
+            signal: false,
             auth: token,
         })
         .then(
             function (data) {
-                MongoDbUpdate(data, 'IotData');
-                res.send(data);
-                console.log('Device variable retrieved successfully:', data);
+                console.log('The LED is back to normal:', data);
             },
             function (err) {
-                console.log('An error occurred while getting attrs:', err);
+                console.log('Error sending a signal to the device:', err);
             }
         );
 });
-*/
+
 app.listen(port, () => {
     console.log(`Listening on port ${port}...`);
 });
