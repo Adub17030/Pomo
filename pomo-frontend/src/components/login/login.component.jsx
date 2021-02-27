@@ -1,41 +1,77 @@
 import React from 'react';
-import FormInput from '../form-input/form-input.component';
-import { SignInContainer,ButtonsContainer,CustomButtonContainer } from './login.styles';
+import { auth } from '../../firebase/firebase.utils';
+import { SignInContainer,ButtonsContainer,CustomButtonContainer,GroupContainer,
+FormInputContainer,FormInputLabel } from './login.styles';
 
 
 class Login extends React.Component {
+    constructor() {
+      super(); 
+      this.state = {
+          username: '',
+          password: ''
+      }
+    }
+
+    handleSubmit = async event => {
+    event.preventDefault(); 
+    const {username,password} = this.state; 
+    try {
+        await auth.signInWithEmailAndPassword(username, password); 
+        alert('Login Successful')
+        this.setState({
+            username: '',
+            password: '', 
+        });
+    } catch(error) {
+        alert(error); 
+    } 
+
+  }
+
+  handleChange = event => {
+      const {name, value} = event.target;
+      this.setState({[name]: value}); 
+  }
 
   render() {
-    return (
-      <SignInContainer>
-        <h1>Login</h1>
-        <form>
-        <label>
-          Username 
-          <FormInput
-          name='email'
-          type='email'
-          label='email'
-          required
-        />
-        </label>
-        <label>
-        Password
-        <FormInput
-            name='password'
-            type='password'
-            label='password'
-            required
-          />
-        </label>
-          <ButtonsContainer>
-          <CustomButtonContainer type='submit'  onClick = {this.handleSubmit}>
-            Log In 
+      const {username, password} = this.state;
+      return (
+          <SignInContainer >
+          <h1>Log In</h1>
+          <form className='sign-up-form' onSubmit={this.handleSubmit}>
+              Username
+              <GroupContainer>
+              <FormInputLabel/>
+              <FormInputContainer type='text'
+                name='username'
+                label='Username'
+                value={username}
+                onChange={this.handleChange}
+                required/>
+              <FormInputLabel/>
+              Password
+              </GroupContainer>
+              <GroupContainer>
+              <FormInputLabel/>
+              <FormInputContainer
+                type='password'
+                name='password'
+                label='Password'
+                value={password}
+                onChange={this.handleChange}
+                required
+              />
+              </GroupContainer>
+              <FormInputLabel/>
+              <ButtonsContainer>
+            <CustomButtonContainer type='submit'>
+              Log In
             </CustomButtonContainer>
           </ButtonsContainer>
-        </form>
-      </SignInContainer>
-    );
+          </form>
+          </SignInContainer>
+      )
   }
 }
 

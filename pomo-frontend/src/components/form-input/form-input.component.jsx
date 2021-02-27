@@ -8,8 +8,8 @@ import {
 
 const FormInput = () => (
   <GroupContainer>
-    <FormInputContainer  />
-      <FormInputLabel/>
+    <FormInputContainer/>
+    <FormInputLabel/>
   </GroupContainer>
 );
 
