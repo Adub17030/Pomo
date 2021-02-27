@@ -25,11 +25,16 @@ const renderTime = (dimension, time) => {
   );
 };
 
+function updatePhoton(){
+    fetch('https://pomo-angel.herokuapp.com/photonToggle')
+  .then(response => response.json())
+  .then(data => console.log(data));
+}
 
 
 function Timer(){
     const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
-    const endTime = stratTime + 243248; // use UNIX timestamp in seconds
+    const endTime = stratTime + 15; // use UNIX timestamp in seconds
   
     const remainingTime = endTime - stratTime;
     const days = Math.ceil(remainingTime / daySeconds);
@@ -60,14 +65,28 @@ function Timer(){
           ]}
         duration={hourSeconds}
         initialRemainingTime={remainingTime % hourSeconds}
-        onComplete={(totalElapsedTime) => [
-          remainingTime - totalElapsedTime > minuteSeconds
-        ]}
+        onComplete={() => updatePhoton()}
       >
-        {({ elapsedTime }) =>
-          renderTime("minutes", getTimeMinutes(hourSeconds - elapsedTime))
-        }
+    {({ elapsedTime }) =>
+                    hourSeconds - elapsedTime < 60
+                        ? renderTime(
+                            'seconds',
+                            getTimeSeconds(minuteSeconds - (hourSeconds - elapsedTime)
+                          )
+                        )
+                        : renderTime(
+                              'minutes',
+                              getTimeMinutes(hourSeconds - elapsedTime)
+                          )
+                }
+
+
+       
       </CountdownCircleTimer>
+
+      
+
+
 </div>
 );
 }
