@@ -14,8 +14,7 @@ const config = {
     measurementId: "G-V61KZ94D0E"
 }
 
-export const createUserProfileDocument = async(userAuth, additionalData) => {
-    if (!userAuth) return; 
+export const createUserProfileDocument = async(username, password,additionalData) => {
     // "current place" but no actual data 
     const userRef = firestore.doc(`users/$1234`);
     // get the collection reference 
@@ -27,14 +26,13 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
     console.log({collection: collectionSnapshot.docs.map(doc => doc.data())}); 
 
     // if snapshot does not exiist create an object reference
-    if(!snapShot.exists) {
-        const {username, email} = userAuth; 
+    if(!snapShot.exists) { 
         const createdAt = new Date(); 
 
         try {
             await userRef.set({
-                usename: 'cariny@gmail.com', 
-                password: '123456', 
+                usename: username, 
+                password: password, 
                 createdAt, 
                 ...additionalData
             }); 
