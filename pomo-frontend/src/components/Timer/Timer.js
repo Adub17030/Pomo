@@ -4,11 +4,6 @@ const minuteSeconds = 60;
 const hourSeconds = 3600;
 const daySeconds = 86400;
 
-const timerProps = {
-  isPlaying: true,
-  size: 300,
-  strokeWidth: 20
-};
 
 
 const getTimeSeconds = (time) => (minuteSeconds - time) | 0;
@@ -19,7 +14,7 @@ const getTimeDays = (time) => (time / daySeconds) | 0;
 const renderTime = (dimension, time) => {
   return (
     <div className="time-wrapper">
-      <p className="title">{time}</p>
+      <p className="title">{time}</p> 
       <p className="subtitle">{dimension}</p>
     </div>
   );
@@ -32,18 +27,23 @@ function updatePhoton(){
 }
 
 
-function Timer(){
+function Timer(props){
     const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
-    const endTime = stratTime + 15; // use UNIX timestamp in seconds
+    const endTime = stratTime + 1500; // use UNIX timestamp in seconds
   
     const remainingTime = endTime - stratTime;
     const days = Math.ceil(remainingTime / daySeconds);
     const daysDuration = days * daySeconds;
-  
-
+    
+    const timerProps = {
+        isPlaying: props.isPlaying,
+        size: 300,
+        strokeWidth: 20
+      };
+      
     return (
 
-  <div class="p-3 ml-6" style={{marginTop: -125}}>
+  <div class="p-3" style={{marginTop: -150, marginLeft: 75}}>
   {/* <CountdownCircleTimer
     isPlaying
     duration={10}
@@ -63,7 +63,7 @@ function Timer(){
             ['#F7B801', 0.33],
             ['#A30000', 0.33],
           ]}
-        duration={hourSeconds}
+        duration={1500}
         initialRemainingTime={remainingTime % hourSeconds}
         onComplete={() => updatePhoton()}
       >
@@ -76,12 +76,12 @@ function Timer(){
                         )
                         : renderTime(
                               'minutes',
-                              getTimeMinutes(hourSeconds - elapsedTime)
+                              getTimeMinutes(hourSeconds - elapsedTime),
                           )
                 }
 
 
-       
+                             
       </CountdownCircleTimer>
 
       
