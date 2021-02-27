@@ -1,6 +1,7 @@
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 const Timer = () => (
+  <div class="p-3 ml-6">
   <CountdownCircleTimer
     isPlaying
     duration={10}
@@ -12,6 +13,7 @@ const Timer = () => (
   >
     {({ remainingTime }) => remainingTime}
   </CountdownCircleTimer>
+  </div>
 )
 
 export default Timer;
