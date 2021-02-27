@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Banner from '../Banner/Banner.jsx';
 import Timer from '../Timer/Timer.js';
 import TimerCard from '../TimerCard/TimerCard.js';
-// import PandaPomo from '../../assets/panda.png'
+import PandaPomo from '../../assets/redpanda.png'
 
 class TimerPage extends Component{
 
@@ -16,14 +16,19 @@ class TimerPage extends Component{
         </div>
         <div class="hero-body">
          <div class="columns is-mobile is-centered">
-            <div class="column is-half">
+            <div class="column">
             
-            {/* <img src={PandaPomo}></img> */}
+            <img style={{marginTop: -250}}src={PandaPomo}></img>
+            
+            </div>
+            <div class="column">
+
+            <Timer></Timer>
 
             </div>
          </div>
+         
             </div>
-
 
 
         </section>
