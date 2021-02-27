@@ -5,6 +5,8 @@ import Banner from './components/Banner/Banner.jsx';
 import Navbar from './components/Navbar/Navbar.js';
 import Landing from './components/Landing/Landing.js';
 import './App.sass';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 
 class App extends React.Component {
   render() {
@@ -14,7 +16,14 @@ class App extends React.Component {
          
         </header> */}
         <Navbar></Navbar>
-        <Landing></Landing>
+        <Switch>
+          <Route path="/" component={Landing} exact />
+          <Route path="/pomodors" component={Landing} />
+          <Route path="/timer" component={Landing} />
+        </Switch>
+
+
+       
       </div>
     );
   }
