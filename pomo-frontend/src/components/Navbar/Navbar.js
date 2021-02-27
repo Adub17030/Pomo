@@ -49,10 +49,11 @@ class Navbar extends Component{
       <div class="navbar-item">
         <div class="buttons">
           <a class="button is-primary">
-            <strong>Sign up</strong>
+            <strong><Link to="/signup">Sign Up</Link>
+            </strong>
           </a>
           <a class="button is-light">
-            Log in
+          <Link to="/login">Log In</Link>
           </a>
         </div>
       </div>
