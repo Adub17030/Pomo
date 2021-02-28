@@ -2,6 +2,7 @@ import React from 'react';
 import { auth } from '../../firebase/firebase.utils';
 import { SignInContainer,ButtonsContainer,CustomButtonContainer,GroupContainer,
 FormInputContainer,FormInputLabel } from './login.styles';
+import {withRouter} from 'react-router-dom';
 
 
 class Login extends React.Component {
@@ -15,20 +16,22 @@ class Login extends React.Component {
 
     handleSubmit = async event => {
     event.preventDefault(); 
-    const {username,password} = this.state; 
+    const {username,password} = this.state;
+    const {history} = this.props; 
     try {
         await auth.signInWithEmailAndPassword(username, password); 
         alert('Login Successful')
         this.setState({
             username: '',
-            password: '', 
+            password: '',
+            uid: '' 
         });
+        history.push('/timer', this.state.uid); 
     } catch(error) {
         alert(error); 
     } 
 
   }
-
   handleChange = event => {
       const {name, value} = event.target;
       this.setState({[name]: value}); 
@@ -75,4 +78,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
