@@ -31,7 +31,7 @@ function Timer(props){
       }
 
     const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
-    const endTime = stratTime + 10; // use UNIX timestamp in seconds
+    const endTime = stratTime + props.duration; // use UNIX timestamp in seconds
     const remainingTime = endTime - stratTime;
     
     const timerProps = {
@@ -59,7 +59,7 @@ const renderTime = ({ remainingTime }) => {
         return (
         <div className="timer">
           <div className="subtitle">Remaining</div>
-          <div className="title">{remainingTime}</div>
+          <div className="title">{Math.ceil(remainingTime / 60)}</div>
           <div className="title" style={{paddingTop:-3}}>minutes</div>
         </div>
         )
@@ -81,7 +81,7 @@ return (
         {...timerProps}
         key={props.key}
         colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
-        duration={10}
+        duration={props.duration}
         initialRemainingTime={remainingTime % hourSeconds}
         onComplete={() => {onCompletion()}}
       >

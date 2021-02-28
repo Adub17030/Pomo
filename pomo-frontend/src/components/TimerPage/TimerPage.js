@@ -17,10 +17,12 @@ class TimerPage extends Component{
         this.state = {
           timerOn: false,
           timeData: 25,
+          timerDuration: 10,
           status: false,
           imgSwitch: false,
           modalState: false,
           key: 0,
+          onBreak: false,
         };
 
         this.handleTimeCallback = this.handleTimeCallback.bind(this);
@@ -32,8 +34,7 @@ class TimerPage extends Component{
     }
 
     updateKey = () => {
-        this.setState({key: this.state.key + 1, modalState: false})
-
+        this.setState({key: this.state.key + 1, modalState: false, onBreak: true, timerDuration: 300})
     }
 
     startTimer(){
@@ -52,11 +53,17 @@ class TimerPage extends Component{
 
 
     handleTimeCallback = (childData) => {
-        this.setState({imgSwitch: childData})
+        this.setState({imgSwitch: !this.state.imgSwitch})
     }
 
     handleModalCallback = (childData) => {
+        if(!this.state.onBreak){
         this.toggleModal()
+        }
+        else{
+            this.setState({onBreak: false, timerDuration: 1500})
+
+        }
     }
 
     render() {
@@ -79,7 +86,7 @@ class TimerPage extends Component{
             </div>
             <div class="column" style={{marginTop: -75}}>
 
-            <Timer key={this.state.key} isPlaying={this.state.timerOn}  parentCallback = {() => {this.handleTimeCallback()}} modalCallback = {() => {this.handleModalCallback()}} ></Timer>
+            <Timer duration={this.state.timerDuration} key={this.state.key} isPlaying={this.state.timerOn}  parentCallback = {() => {this.handleTimeCallback()}} modalCallback = {() => {this.handleModalCallback()}} ></Timer>
 
              <div class="buttons" style={{marginTop: 50, marginLeft: 55}} >
             <button class="button is-info is-medium is-hovered">BREAK?</button>
@@ -91,7 +98,6 @@ class TimerPage extends Component{
             <button class="button is-danger is-medium is-hovered" onClick={() => this.startTimer()}>UNPAUSE</button>
             }
             </div>        
-
 
 
             </div>
