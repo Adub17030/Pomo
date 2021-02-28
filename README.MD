@@ -99,7 +99,7 @@ Cariny Perez - perezcariny@gmail.com
 
 Anoushka Gupta - anoushka_gupta@berkeley.edu
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/your_username/repo_name](https://mypomo.netlify.app/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
