@@ -92,8 +92,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 Rohan Parikh - rohan.2.parikh@uconn.edu
+
 Aditya Dubey - aditya.dubey@uconn.edu
+
 Cariny Perez - perezcariny@gmail.com
+
 Anoushka Gupta - anoushka_gupta@berkeley.edu
 
 Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
