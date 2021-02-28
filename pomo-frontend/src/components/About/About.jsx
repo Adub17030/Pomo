@@ -15,7 +15,7 @@ class About extends Component {
                     class="subtitle"
                     style={{ padding: '10px', fontSize: '25px' }}
                 >
-                    Pomo is an interactive web app that help teachers keep
+                    Pomo is an interactive web app that helps teachers keep
                     students on task and prevents students from academic
                     burnout. <br />
                     Stay focused and productive with the power of the
@@ -154,8 +154,9 @@ class About extends Component {
                     <strong>Pomodaur companion </strong>to the app! This
                     companion contains a particle photon (an IoT-enabled chip)
                     and can communicate Pomodoro messages to you as well as
-                    allow you to transmit messages back the app! Additionally,
-                    students earn virtual Pomos for finishing their tasks.
+                    allow you to transmit messages back to the app!
+                    Additionally, students earn virtual Pomos for finishing
+                    their tasks.
                 </p>
                 <img
                     src={RedPanda}
@@ -169,7 +170,7 @@ class About extends Component {
                 <p class="subtitle" style={{ fontSize: '25px' }}>
                     Now, you can break up your tasks into manageable intervals
                     and earn Pomos on the way.{' '}
-                    <strong>Can you catch them all!</strong>
+                    <strong>Can you collect them all!</strong>
                 </p>
             </section>
         );
