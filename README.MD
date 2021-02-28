@@ -42,44 +42,12 @@
 -   [Particle](https://laravel.com)
 -   [Bulma](https://laravel.com)
 
-<!-- GETTING STARTED -->
-
-## Getting Started
-
-Clone the repository and naviagt
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-
--   npm
-    ```sh
-    npm install npm@latest -g
-    ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-    ```sh
-    git clone https://github.com/your_username_/Project-Name.git
-    ```
-3. Install NPM packages
-    ```sh
-    npm install
-    ```
-4. Enter your API in `config.js`
-    ```JS
-    const API_KEY = 'ENTER YOUR API';
-    ```
 
 <!-- USAGE EXAMPLES -->
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+https://devpost.com/software/pomo-la5pqc
 
 <!-- LICENSE -->
 
@@ -99,7 +67,7 @@ Cariny Perez - perezcariny@gmail.com
 
 Anoushka Gupta - anoushka_gupta@berkeley.edu
 
-Project Link: [https://github.com/your_username/repo_name](https://mypomo.netlify.app/)
+Project Link: [https://mypomo.netlify.app/](https://mypomo.netlify.app/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
