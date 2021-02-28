@@ -7,6 +7,7 @@ import Landing from './components/Landing/Landing.js';
 import TimerPage from './components/TimerPage/TimerPage.js';
 import SignupPage from './pages/signuppage/signuppage.component';
 import LoginPage from './pages/loginpage/loginpage.component';
+import PomoPage from './components/PomoPage/PomoPage.js';
 
 import './App.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -25,8 +26,7 @@ class App extends React.Component {
   
         <Switch>
           <Route path="/" component={Landing} exact />
-          <Route path="/pomodors" component={Landing} />
-          <Route path="/timer" component={TimerPage} />
+          <Route path="/pomodors" component={PomoPage} />
           <Route path="/timer" component={TimerPage} />
           <Route path="/signup" component={SignupPage} />
           <Route path="/login" component={LoginPage} />
