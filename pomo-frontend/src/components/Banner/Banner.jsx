@@ -19,8 +19,8 @@ function Banner(props) {
   <div class="column">
   <Animated animationIn="lightSpeedIn" animationOut="zoomOutDown" animationInDuration={1000} animationOutDuration={1400} isVisible={true}>
   <div class="content">
-  <p class="title is-1">Learn more. Play More. Do more.</p>
-  <p class="title is-1"><strong>With Pomo.</strong></p>
+  <p class="title is-2"><strong>Learn more. Play More. Do more.</strong></p>
+  <p class="title is-1"><strong>WITH POMO</strong></p>
   <button class="button is-link is-large is-rounded" onClick={() => {props.scrollCallback()}}>Get Started</button>
 </div>
 </Animated>

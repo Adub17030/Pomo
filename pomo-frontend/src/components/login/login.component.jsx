@@ -10,8 +10,14 @@ class Login extends React.Component {
       super(); 
       this.state = {
           username: '',
-          password: ''
+          password: '',
+          uid: ''
       }
+    }
+
+    componentWillMount() {
+      const uid = this.props.location.state; 
+      this.setState({uid: uid})
     }
 
     handleSubmit = async event => {
@@ -20,13 +26,7 @@ class Login extends React.Component {
     const {history} = this.props; 
     try {
         await auth.signInWithEmailAndPassword(username, password); 
-        alert('Login Successful')
-        this.setState({
-            username: '',
-            password: '',
-            uid: '' 
-        });
-        history.push('/timer', this.state.uid); 
+        history.push('/', this.state.uid); 
     } catch(error) {
         alert(error); 
     } 
