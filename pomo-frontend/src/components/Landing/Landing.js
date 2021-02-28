@@ -40,7 +40,7 @@ class Landing extends Component {
     userData = async () => {
         const {uid} = this.state;
         const userRef = await getUserData(uid);
-        this.setState({user: userRef.email});
+        this.setState({user: userRef.handle});
         console.log(userRef.email);  
     }
     render() 

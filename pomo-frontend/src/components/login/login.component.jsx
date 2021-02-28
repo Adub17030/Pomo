@@ -43,7 +43,7 @@ class Login extends React.Component {
           <SignInContainer >
           <h1>Log In</h1>
           <form className='sign-up-form' onSubmit={this.handleSubmit}>
-              Username
+              Email
               <GroupContainer>
               <FormInputLabel/>
               <FormInputContainer type='text'

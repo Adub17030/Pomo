@@ -11,6 +11,7 @@ class SignUp extends React.Component {
   constructor() {
       super(); 
       this.state = {
+          handle: '',
           username: '',
           password: '', 
           uid: ''
@@ -19,11 +20,11 @@ class SignUp extends React.Component {
 
   handleSubmit = async event => {
       event.preventDefault(); 
-      const {username,password} = this.state; 
+      const {username,password, handle} = this.state; 
       const {history} = this.props;
       try {
           const {user} = await auth.createUserWithEmailAndPassword(username, password); 
-          await createUserProfileDocument(user);
+          await createUserProfileDocument(user, {handle});
           this.setState({
               username: '',
               password: '',
@@ -44,7 +45,7 @@ class SignUp extends React.Component {
     const value = event.target.value; 
   }
   render() {
-      const {username, password} = this.state; 
+      const {username, password, handle} = this.state; 
       return (
           <SignUpContainer >
           <h1>Sign Up</h1>
@@ -57,7 +58,18 @@ class SignUp extends React.Component {
                 <input type="radio" value="option2" name='radio' onClick={this.handleClick}/>
                 </label>
             </RadioButtonContainer>
-              Username
+              Handle
+              <GroupContainer>
+              <FormInputLabel/>
+              <FormInputContainer type='text'
+                name='handle'
+                value={handle}
+                onChange={this.handleChange}
+                label='handle'
+                required/>
+              <FormInputLabel/>
+              </GroupContainer>
+              Email
               <GroupContainer>
               <FormInputLabel/>
               <FormInputContainer type='text'
@@ -67,8 +79,8 @@ class SignUp extends React.Component {
                 label='Username'
                 required/>
               <FormInputLabel/>
-              Password
               </GroupContainer>
+              Password
               <GroupContainer>
               <FormInputLabel/>
               <FormInputContainer
