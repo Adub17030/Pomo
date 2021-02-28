@@ -28,8 +28,8 @@ class App extends React.Component {
           <Route path="/pomodors" component={Landing} />
           <Route path="/timer" component={TimerPage} />
           <Route path="/timer" component={TimerPage} />
-          <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
+          <Route path="/login" component={LoginPage} />
         </Switch>
        
       </div>
