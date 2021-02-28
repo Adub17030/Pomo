@@ -19,7 +19,7 @@ class About extends Component {
                     students on task and prevents students from academic
                     burnout. <br />
                     Stay focused and productive with the power of the
-                    <strong> Pomodoro</strong> technique.{' '}
+                    <strong> Pomodoro</strong> technique:{' '}
                 </p>
                 <div class="timeline is-centered">
                     <header class="timeline-header">
