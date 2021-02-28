@@ -4,7 +4,7 @@ import About from '../About/About.jsx';
 import Timer from '../Timer/Timer.js';
 import {withRouter} from 'react-router-dom';
 import { getUserData } from '../../firebase/firebase.utils.js';
-
+import './Landing.scss';
 
 class Landing extends Component {
 
@@ -49,7 +49,7 @@ class Landing extends Component {
         if (user) {
             if(user.length >= 2) {
                 return ( 
-                    <div>
+                    <div className='user'>
                         <h1>Hello {user}</h1>
                         <Banner scrollCallback={() => {this.handleScrollCallback()}}></Banner>
                         <div ref={this.myRef}>

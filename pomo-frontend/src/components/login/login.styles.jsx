@@ -10,7 +10,7 @@ export const SignInContainer = styled.div`
     font-weight: bolder;
 
     h1 {
-        font-size: 36px; 
+        font-size: 48px; 
         border-bottom: 5px solid black; 
         margin-bottom: 100px; 
     }
