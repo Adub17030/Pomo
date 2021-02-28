@@ -98,25 +98,10 @@ class TimerPage extends Component{
             <button class="button is-danger is-medium is-hovered" onClick={() => this.startTimer()}>UNPAUSE</button>
             }
             </div>        
-
-
             </div>
          </div>
-         <div class="columns is-mobile is-centered">
-            <div class="column is-one-third"></div>
-            <div class="column">
-           
-
-            </div>
-            <div class="column"></div>
-         </div>
-
-
-
-
-            </div>
-
-
+       </div>
+    
         </section>
         </Animated>
         <Animated animationIn="bounceInLeft" animationOut="zoomOutDown" animationInDuration={5000} animationOutDuration={2000} isVisible={true}>
