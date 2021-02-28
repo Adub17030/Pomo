@@ -24,19 +24,13 @@ function updatePhoton(){
 function Timer(props){
 
     const [modalState, setModalState] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(props.isPlaying);
+    const [key, setKey] = useState(0);
 
     const toggleModal = () => {    
         setModalState(!modalState)
       }
 
-    const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
-    const endTime = stratTime + 50; // use UNIX timestamp in seconds
- 
-
-    const remainingTime = endTime - stratTime;
-    const days = Math.ceil(remainingTime / daySeconds);
-    const daysDuration = days * daySeconds;
-    
     const timerProps = {
         isPlaying: props.isPlaying,
         size: 300,
@@ -45,67 +39,52 @@ function Timer(props){
       
     const onCompletion = () => {
         updatePhoton()
-        // toggleModal()
+        toggleModal()
+        setIsPlaying(false)
     }
 
-const renderTime = (dimension, time, elapsed) => {
+const renderTime = ({ remainingTime }) => {
+    if (remainingTime === 0) {
+        return <div className="title">Break Time!</div>;
+      }
+    else if(remainingTime > 61)
+    {
+        return (
+        <div className="timer">
+          <div className="subtitle">Remaining</div>
+          <div className="title">{remainingTime}</div>
+          <div className="title" style={{paddingTop:-3}}>minutes</div>
+        </div>
+        )
+    }
+
+      return (
+        <div className="timer">
+          <div className="subtitle">Remaining</div>
+          <div className="title">{remainingTime}</div>
+          <div className="title">seconds</div>
+        </div>
+      );
     
-    if(elapsed == 600 || elapsed == 1200 || elapsed == 1500 || elapsed == 5){
-    props.parentCallback(elapsed);
-    }
-// only spot this works
-
-  return (
-    <div className="time-wrapper">
-      <p className="title">{time}</p> 
-      <p className="subtitle">{dimension}</p>
-    </div>
-  );
 };
 
-    return (
+
+
+
+
+return (
 
   <div class="p-3" style={{marginTop: -150, marginLeft: 75}}>
-  {/* <CountdownCircleTimer
-    isPlaying
-    duration={10}
-    colors={[
-      ['#004777', 0.33],
-      ['#F7B801', 0.33],
-      ['#A30000', 0.33],
-    ]}
-  >
-    {({ remainingTime }) => remainingTime}
-  </CountdownCircleTimer>
-  </div> */}
    <CountdownCircleTimer
         {...timerProps}
-        colors={[
-            ['#004777', 0.33],
-            ['#F7B801', 0.33],
-            ['#A30000', 0.33],
-          ]}
+        key={key}
+        colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
         duration={50}
         initialRemainingTime={remainingTime % hourSeconds}
-        onComplete={() => onCompletion}
+        onComplete={() => {onCompletion()}}
       >
     
-    {({ elapsedTime }) =>
-                    hourSeconds - elapsedTime < 60
-                        ? renderTime(
-                            'seconds',
-                            getTimeSeconds(minuteSeconds - (hourSeconds - elapsedTime),
-                            elapsedTime
-                          )
-                        )
-                        : renderTime(
-                              'minutes',
-                              getTimeMinutes(hourSeconds - elapsedTime),
-                              elapsedTime
-                          )
-                }
-
-
+        {renderTime}
                              
       </CountdownCircleTimer>
       
@@ -114,9 +93,10 @@ const renderTime = (dimension, time, elapsed) => {
             modalState={modalState} 
             title="Example modal title"
           >
+          <button onClick={() => setKey((prevKey) => prevKey + 1)}>
+          Start Break
+        </button>
       </Modal>
-
-
 </div>
 );
 }
