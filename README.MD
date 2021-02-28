@@ -12,7 +12,7 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li><a href="#check-out-the-Devpost">Devpost</a></li>
+    <li><a href="#check-out-the-devpost">Devpost</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -35,7 +35,7 @@ https://mypomo.netlify.app
 
 <!-- USAGE EXAMPLES -->
 
-## Check out out Devpost
+## Check out the Devpost
 
 https://devpost.com/software/pomo-la5pqc
 
