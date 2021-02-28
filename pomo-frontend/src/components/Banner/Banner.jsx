@@ -4,8 +4,8 @@ import Pomos from '../../assets/pomos1.png'
 import {Animated} from "react-animated-css";
  
 
-class Banner extends Component {
-  render() { 
+function Banner(props) {
+  
     return (
       <section class="hero is-primary is-fullheight">
         <div class="hero-body">
@@ -21,7 +21,7 @@ class Banner extends Component {
   <div class="content">
   <p class="title is-1">Learn more. Play More. Do more.</p>
   <p class="title is-1"><strong>With Pomo.</strong></p>
-  <button class="button is-link is-large is-rounded">Get Started</button>
+  <button class="button is-link is-large is-rounded" onClick={() => {props.scrollCallback()}}>Get Started</button>
 </div>
 </Animated>
 
@@ -31,7 +31,6 @@ class Banner extends Component {
         </div>
       </section>
     );
-  }
 }
 
 export default Banner;
