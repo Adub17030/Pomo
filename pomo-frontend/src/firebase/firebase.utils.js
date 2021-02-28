@@ -48,9 +48,9 @@ firebase.initializeApp(config);
 
 export const getUserData = async (uid) => {
     const userRef = firestore.doc(`users/${uid}`); 
-    userRef.onSnapshot(snapShot => {
-        console.log(snapShot.data()); 
-    });
+    const snapShot = await userRef.get();
+    const data = snapShot.data(); 
+    return data
 }
 
 export const auth = firebase.auth();
