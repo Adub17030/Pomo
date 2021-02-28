@@ -1,6 +1,15 @@
 import styled,{css} from 'styled-components';
 
 
+export const RadioButtonContainer = styled.div`
+    display: flex; 
+    flex-direction: row;
+    margin-bottom: 30px; 
+
+    label {
+      margin-right: 20px; 
+    }
+`;
 export const SignUpContainer = styled.div`
     width: 380px;
     display: flex;
@@ -12,13 +21,16 @@ export const SignUpContainer = styled.div`
     h1 {
         font-size: 36px; 
         border-bottom: 5px solid black; 
-        margin-bottom: 100px; 
+        margin-bottom: 50px; 
     }
+
 `;
 
 export const ButtonsContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    
+
 
 `;
 
