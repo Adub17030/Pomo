@@ -18,19 +18,21 @@ function updatePhoton(){
   .then(data => console.log(data));
 }
 
-
-
-
 function Timer(props){
 
     const [modalState, setModalState] = useState(false);
     const [isPlaying, setIsPlaying] = useState(props.isPlaying);
     const [key, setKey] = useState(0);
 
+
     const toggleModal = () => {    
         setModalState(!modalState)
       }
 
+    const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
+    const endTime = stratTime + 50; // use UNIX timestamp in seconds
+    const remainingTime = endTime - stratTime;
+    
     const timerProps = {
         isPlaying: props.isPlaying,
         size: 300,
@@ -68,12 +70,7 @@ const renderTime = ({ remainingTime }) => {
     
 };
 
-
-
-
-
 return (
-
   <div class="p-3" style={{marginTop: -150, marginLeft: 75}}>
    <CountdownCircleTimer
         {...timerProps}
