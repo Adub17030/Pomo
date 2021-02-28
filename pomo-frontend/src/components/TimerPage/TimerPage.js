@@ -72,7 +72,11 @@ class TimerPage extends Component{
         <Animated animationIn="bounceInRight" animationOut="zoomOutDown" animationInDuration={1500} animationOutDuration={2000} isVisible={true}>
         <section class="hero is-warning is-large">
         <div class="hero-head"> 
+        {this.state.onBreak ?
+        <p className="title is-1 pt-3">BREAK TIME!</p>
+        :
         <p className="title is-1 pt-3">FINISH SOME HOMEWORK</p>
+        }
         </div>
         <div class="hero-body">
          <div class="columns is-mobile is-centered" style={{marginLeft: 75}}>
@@ -108,8 +112,54 @@ class TimerPage extends Component{
         <section class="hero is-danger is-large">
         <div class="hero-body">
           <div class="container has-text-centered">
-
-
+          <div class="columns is-mobile is-centered">
+          <div class="column is-half" style={{marginTop:-200}}>
+          <article class="panel is-link">
+  <p class="panel-heading">
+    Your Homeworks
+  </p>
+  <p class="panel-tabs">
+    <a class="is-active">All</a>
+    <a>Science</a>
+    <a>Math</a>
+    <a>Reading</a>
+    <a>Writing</a>
+  </p>
+  <div class="panel-block">
+    <p class="control has-icons-left">
+      <input class="input is-link" type="text" placeholder="Search"/    >
+      <span class="icon is-left">
+        <i class="fas fa-search" aria-hidden="true"></i>
+      </span>
+    </p>
+  </div>
+  <a class="panel-block is-active">
+    <span class="panel-icon">
+      <i class="fas fa-book" aria-hidden="true"></i>
+    </span>
+    Who was Einstein? Reading
+  </a>
+  <a class="panel-block">
+    <span class="panel-icon">
+      <i class="fas fa-book" aria-hidden="true"></i>
+    </span>
+    Earth Science HW
+  </a>
+  <a class="panel-block">
+    <span class="panel-icon">
+      <i class="fas fa-book" aria-hidden="true"></i>
+    </span>
+    Weather Journal
+  </a>
+  <a class="panel-block">
+    <span class="panel-icon">
+      <i class="fas fa-book" aria-hidden="true"></i>
+    </span>
+    Science Memes
+  </a>
+</article>
+</div>
+</div>
 
              </div>
             </div>

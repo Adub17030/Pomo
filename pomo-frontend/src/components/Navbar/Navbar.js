@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedSwitch from '../AnimatedSwitch/AnimatedSwitch.js'
-
+import Logo from '../../assets/logo.png'
 class Navbar extends Component{
 
 
@@ -16,7 +16,7 @@ class Navbar extends Component{
             <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"/>
+      <img src={Logo} width="100" height="60"/>
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
