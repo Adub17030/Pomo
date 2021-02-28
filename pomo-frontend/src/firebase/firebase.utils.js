@@ -4,7 +4,7 @@ import 'firebase/firestore';
 import 'firebase/auth'; 
 
 // add firebase config 
-const config = {
+export const config = {
     apiKey: "AIzaSyAC9C9Vg-eSflSwhtvN0hC2-Tv-vNpszH8",
     authDomain: "pomo-150fc.firebaseapp.com",
     projectId: "pomo-150fc",
@@ -42,24 +42,21 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
     return userRef; 
 }
 
-export const writeUserData = async (userId,otherData) => {
-    const userRef = firestore.doc(`users/${userId}`);
-    // get the collection reference 
-    const collectionRef = firestore.collection('users'); 
-    // use CRUD methods on a doc ref to get a snapshot 
-    const snapShot = await userRef.get();
-    const data = snapShot.data(); 
-    userRef.set({
-        otherData: otherData,
-    },{ merge: true }); 
-}
-
-
 // Initialize Firebase
 firebase.initializeApp(config);
+
+
+export const getUserData = async (uid) => {
+    const userRef = firestore.doc(`users/${uid}`); 
+    userRef.onSnapshot(snapShot => {
+        console.log(snapShot.data()); 
+    });
+}
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 export default firebase; 
+
 
 
