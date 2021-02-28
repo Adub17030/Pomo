@@ -41,9 +41,9 @@ export const CustomButtonContainer = styled.button`
     letter-spacing: 0.5px;
     line-height: 20px;
     padding: 0 35px 0 35px;
-    font-size: 12px;
+    font-size: 20px;
     background-color: #06d6a0;
-    color: white;
+    color: blue;
     text-transform: uppercase;
     font-family: 'Open Sans Condensed';
     font-weight: bolder;
@@ -55,7 +55,7 @@ export const CustomButtonContainer = styled.button`
     text-align: center; 
   
     &:hover {
-      background-color: #e8e8e8;
+      background-color: black;
       color: white; 
     }
 `; 
