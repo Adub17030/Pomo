@@ -1,7 +1,8 @@
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import React, { useState } from 'react';
 import Modal from '../Modal/Modal.js';
-
+import Studying from '../../assets/studying.gif'
+import Pinata from '../../assets/pinata.gif'
 
 const minuteSeconds = 60;
 const hourSeconds = 3600;
@@ -30,7 +31,7 @@ function Timer(props){
       }
 
     const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
-    const endTime = stratTime + 50; // use UNIX timestamp in seconds
+    const endTime = stratTime + 10; // use UNIX timestamp in seconds
     const remainingTime = endTime - stratTime;
     
     const timerProps = {
@@ -43,13 +44,17 @@ function Timer(props){
         updatePhoton()
         toggleModal()
         setIsPlaying(false)
+        props.parentCallback(true)
+        props.modalCallback(true)
     }
 
+
 const renderTime = ({ remainingTime }) => {
+    
     if (remainingTime === 0) {
         return <div className="title">Break Time!</div>;
       }
-    else if(remainingTime > 61)
+    else if(remainingTime > 59)
     {
         return (
         <div className="timer">
@@ -74,9 +79,9 @@ return (
   <div class="p-3" style={{marginTop: -150, marginLeft: 75}}>
    <CountdownCircleTimer
         {...timerProps}
-        key={key}
+        key={props.key}
         colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
-        duration={50}
+        duration={10}
         initialRemainingTime={remainingTime % hourSeconds}
         onComplete={() => {onCompletion()}}
       >
@@ -85,15 +90,7 @@ return (
                              
       </CountdownCircleTimer>
       
-      <Modal 
-            closeModal={toggleModal} 
-            modalState={modalState} 
-            title="Example modal title"
-          >
-          <button onClick={() => setKey((prevKey) => prevKey + 1)}>
-          Start Break
-        </button>
-      </Modal>
+     
 </div>
 );
 }

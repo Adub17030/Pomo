@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import Banner from '../Banner/Banner.jsx';
 import Timer from '../Timer/Timer.js';
 import TimerCard from '../TimerCard/TimerCard.js';
@@ -8,6 +8,8 @@ import Pinata from '../../assets/pinata.gif'
 import Studying from '../../assets/studying.gif'
 import MagicCat from '../../assets/magiccat.gif'
 import {Animated} from "react-animated-css";
+import Modal from '../Modal/Modal.js';
+
 
 class TimerPage extends Component{
     constructor() {
@@ -15,8 +17,24 @@ class TimerPage extends Component{
         this.state = {
           timerOn: false,
           timeData: 25,
+          status: false,
+          imgSwitch: false,
+          modalState: false,
+          key: 0,
         };
+
+        this.handleTimeCallback = this.handleTimeCallback.bind(this);
+        this.handleModalCallback = this.handleModalCallback.bind(this);
       }
+
+    toggleModal = () => {    
+        this.setState({modalState: !this.state.modalState})
+    }
+
+    updateKey = () => {
+        this.setState({key: this.state.key + 1, modalState: false})
+
+    }
 
     startTimer(){
         this.setState({
@@ -33,12 +51,13 @@ class TimerPage extends Component{
     }
 
 
-    handleTimeCallback = (childData) =>{
-        this.setState({timeData: childData})
-        console.log("Time Passed: " + this.state.timeData)
+    handleTimeCallback = (childData) => {
+        this.setState({imgSwitch: childData})
     }
 
-  
+    handleModalCallback = (childData) => {
+        this.toggleModal()
+    }
 
     render() {
         return (
@@ -51,20 +70,16 @@ class TimerPage extends Component{
         <div class="hero-body">
          <div class="columns is-mobile is-centered" style={{marginLeft: 75}}>
             <div class="column">
-            {this.state.timeData < 600 ?
+            {!this.state.imgSwitch ?
             <img style={{marginTop: -250, width: 600, height: 450, borderRadius: 20}} src={MagicCat}></img>   
             :
-            this.state.timeData >= 600 && this.state.timeData < 1200 ?
             <img style={{marginTop: -250, width: 600, height: 450, borderRadius: 20}} src={Studying}></img>
-            :
-            <img style={{marginTop: -250, width: 600, height: 450, borderRadius: 20}} src={Pinata}></img>
             }
-            
             
             </div>
             <div class="column" style={{marginTop: -75}}>
 
-            <Timer isPlaying={this.state.timerOn}  parentCallback = {() => {this.handleTimeCallback()}}></Timer>
+            <Timer key={this.state.key} isPlaying={this.state.timerOn}  parentCallback = {() => {this.handleTimeCallback()}} modalCallback = {() => {this.handleModalCallback()}} ></Timer>
 
              <div class="buttons" style={{marginTop: 50, marginLeft: 55}} >
             <button class="button is-info is-medium is-hovered">BREAK?</button>
@@ -109,6 +124,20 @@ class TimerPage extends Component{
             </div>
         </section>
         </Animated>
+
+         <Modal 
+            closeModal={this.toggleModal} 
+            modalState={this.state.modalState} 
+            title="YOU WON A POMO!"
+          >
+          <p class="title is-4">Pepe The Pinata was added to your collection!</p>
+          <img style={{width: 600, height: 450, borderRadius: 20}} src={Pinata}></img>
+          <button class="button is-danger is-medium is-hovered" onClick={() => this.updateKey()}>
+          Start Break
+        </button>
+        
+      </Modal>
+
 
         </div>
         )
