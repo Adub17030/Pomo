@@ -6,7 +6,7 @@ class LoginPage extends React.Component {
     render() {
                 return(
                     <div className='login'>
-                        <Login/>
+                        <Login props={this.props}/>
                     </div>
                 ) 
             }

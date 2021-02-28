@@ -14,25 +14,24 @@ const config = {
     measurementId: "G-V61KZ94D0E"
 }
 
-export const createUserProfileDocument = async(username, password,additionalData) => {
-    // "current place" but no actual data 
-    const userRef = firestore.doc(`users/$1234`);
+export const createUserProfileDocument = async(userAuth, additionalData) => {
+    if (!userAuth) return; 
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
+
     // get the collection reference 
     const collectionRef = firestore.collection('users'); 
     // use CRUD methods on a doc ref to get a snapshot 
     const snapShot = await userRef.get(); 
 
-    const collectionSnapshot = await collectionRef.get(); 
-    console.log({collection: collectionSnapshot.docs.map(doc => doc.data())}); 
 
     // if snapshot does not exiist create an object reference
-    if(!snapShot.exists) { 
+    if(!snapShot.exists) {
+        const {email} = userAuth; 
         const createdAt = new Date(); 
 
         try {
             await userRef.set({
-                usename: username, 
-                password: password, 
+                email,
                 createdAt, 
                 ...additionalData
             }); 
@@ -40,9 +39,21 @@ export const createUserProfileDocument = async(username, password,additionalData
             console.log('error creating user', error.message); 
         }
     }
-
     return userRef; 
 }
+
+export const writeUserData = async (userId,otherData) => {
+    const userRef = firestore.doc(`users/${userId}`);
+    // get the collection reference 
+    const collectionRef = firestore.collection('users'); 
+    // use CRUD methods on a doc ref to get a snapshot 
+    const snapShot = await userRef.get();
+    const data = snapShot.data(); 
+    userRef.set({
+        otherData: otherData,
+    },{ merge: true }); 
+}
+
 
 // Initialize Firebase
 firebase.initializeApp(config);
