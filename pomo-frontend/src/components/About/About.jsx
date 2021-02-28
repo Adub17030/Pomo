@@ -5,11 +5,22 @@ class About extends Component {
     render() {
         return (
             <section class="section">
-                <h1 class="title">What is Pomo?</h1>
-                <h2 class="subtitle" style={{ paddingTop: '10px' }}>
-                    Pomo is a Stay focused and productive with the power of the
+                <h1
+                    class="title"
+                    style={{ fontSize: '50px', marginBottom: '50px' }}
+                >
+                    What is Pomo?
+                </h1>
+                <p
+                    class="subtitle"
+                    style={{ padding: '10px', fontSize: '25px' }}
+                >
+                    Pomo is an interactive web app that help teachers keep
+                    students on task and prevents students from academic
+                    burnout. <br />
+                    Stay focused and productive with the power of the
                     <strong> Pomodoro</strong> technique.{' '}
-                </h2>
+                </p>
                 <div class="timeline is-centered">
                     <header class="timeline-header">
                         <span
@@ -135,19 +146,31 @@ class About extends Component {
                         </span>
                     </header>
                 </div>
+                <p
+                    class="subtitle"
+                    style={{ fontSize: '25px', paddingTop: '35px' }}
+                >
+                    With Pomo, you can also connect an (adorable){' '}
+                    <strong>Pomodaur companion </strong>to the app! This
+                    companion contains a particle photon (an IoT-enabled chip)
+                    and can communicate Pomodoro messages to you as well as
+                    allow you to transmit messages back the app! Additionally,
+                    students earn virtual Pomos for finishing their tasks.
+                </p>
                 <img
                     src={RedPanda}
                     style={{
                         width: '300px',
-                        marginTop: '25px',
+                        marginTop: '15x',
                         marginBottom: '25px',
                         marginRight: '100px',
                     }}
                 ></img>
-                <h2>
-                    Break up your taks into manageable intervals and earn Pomos
-                    for finishing your tasks. Can YOU catch them All!
-                </h2>
+                <p class="subtitle" style={{ fontSize: '25px' }}>
+                    Now, you can break up your tasks into manageable intervals
+                    and earn Pomos on the way.{' '}
+                    <strong>Can you catch them all!</strong>
+                </p>
             </section>
         );
     }
