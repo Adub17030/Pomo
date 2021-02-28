@@ -7,7 +7,7 @@ class Navbar extends Component {
         return (
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
-                    <a class="navbar-item" href="https://bulma.io">
+                    <a class="navbar-item" href="https://mypomo.netlify.app/">
                         <img src={Logo} width="100" height="60" />
                     </a>
 
